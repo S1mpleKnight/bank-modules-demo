@@ -21,15 +21,19 @@ public class PassportDto {
     @NotBlank(message = "Passport series can not be null")
     @Pattern(message = "Passport series is not valid", regexp = PASSPORT_SERIES_REGEXP)
     private String passportSeries;
+
     @NotBlank(message = "Passport number can not be null")
     @Pattern(message = "Passport number is not valid", regexp = PASSPORT_NUMBER_REGEXP)
     private String passportNumber;
+
     @NotBlank(message = "Issuing authority can not be null")
     @Pattern(message = "Issuing authority is not valid", regexp = PASSPORT_ISSUING_AUTHORITY_REGEXP)
     private String issuingAuthority;
+
     @NotBlank(message = "Issue date can not be null")
     @JsonFormat(pattern = DATE_REGEXP, shape = JsonFormat.Shape.STRING)
     private LocalDate issueDate;
+
     @NotBlank(message = "Identity number can not be null")
     @Pattern(message = "Identity number is not valid", regexp = IDENTITY_NUMBER_REGEXP)
     private String identityNumber;

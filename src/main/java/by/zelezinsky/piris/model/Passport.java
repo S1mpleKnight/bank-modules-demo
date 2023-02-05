@@ -13,17 +13,23 @@ public class Passport {
 
     @Id
     private UUID id = UUID.randomUUID();
+
     @OneToOne
     @JoinColumn(nullable = false, columnDefinition = "client_id")
     private Client client;
+
     @Column(nullable = false)
     private String passportSeries;
+
     @Column(nullable = false)
     private String passportNumber;
+
     @Column(nullable = false)
     private String issuingAuthority;
+
     @Column(nullable = false)
     private LocalDate issueDate;
+
     @Column(nullable = false)
     private String identityNumber;
 }

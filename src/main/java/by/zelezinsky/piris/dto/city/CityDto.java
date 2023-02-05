@@ -4,10 +4,14 @@ package by.zelezinsky.piris.dto.city;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Valid
+@AllArgsConstructor
+@NoArgsConstructor
 public class CityDto {
 
     private static final String CITY_REGEXP = "[a-zA-zа-яА-Я -]{2,}";
