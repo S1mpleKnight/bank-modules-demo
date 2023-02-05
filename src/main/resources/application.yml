@@ -1,0 +1,16 @@
+#-----------------------DB CONNECTION-----------------------
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/piris
+    username: postgres
+    password: password
+    driver-class-name : org.postgresql.Driver
+#-----------------------JPA ORM OPTIONS---------------------
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
