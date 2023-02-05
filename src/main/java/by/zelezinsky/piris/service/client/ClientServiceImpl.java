@@ -3,7 +3,9 @@ package by.zelezinsky.piris.service.client;
 import by.zelezinsky.piris.dto.city.CityDto;
 import by.zelezinsky.piris.dto.client.ClientDto;
 import by.zelezinsky.piris.dto.client.ClientDtoMapper;
+import by.zelezinsky.piris.dto.passport.PassportDto;
 import by.zelezinsky.piris.dto.passport.PassportDtoMapper;
+import by.zelezinsky.piris.exception.BusinessException;
 import by.zelezinsky.piris.exception.NotFoundException;
 import by.zelezinsky.piris.model.City;
 import by.zelezinsky.piris.model.Client;
@@ -15,7 +17,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -29,8 +33,29 @@ public class ClientServiceImpl implements ClientService {
     private final PassportDtoMapper passportDtoMapper;
 
     @Override
+    @Transactional
     public ClientDto create(ClientDto dto) {
         City city = cityService.create(new CityDto(dto.getLivingCity()));
+        Optional<Client> createdClient = clientRepository
+                .findByFirstNameAndLastNameAndMiddleName(dto.getFirstName(), dto.getLastName(), dto.getMiddleName());
+        if (createdClient.isPresent()) {
+            throw new BusinessException(String.format("Client with name: %s %s %s is already exists",
+                    dto.getFirstName(), dto.getMiddleName(), dto.getLastName()));
+        }
+        PassportDto passportDto = dto.getPassport();
+        Optional<Passport> optionalPassport = passportRepository
+                .findByIdentityNumber(passportDto.getIdentityNumber());
+        if (optionalPassport.isPresent()) {
+            throw new BusinessException(String.format("Client with passport identity number: %s is already exists",
+                    passportDto.getIdentityNumber()));
+        }
+        Optional<Passport> clonePassport = passportRepository
+                .findByPassportSeriesAndIssuingAuthorityAndIssueDateAndPassportNumber(
+                        passportDto.getPassportSeries(), passportDto.getIssuingAuthority(), passportDto.getIssueDate(),
+                        passportDto.getPassportNumber());
+        if (clonePassport.isPresent()) {
+            throw new BusinessException("Client with that password is already exists");
+        }
         Client client = clientDtoMapper.toEntity(dto);
         client.setLivingCity(city);
         client = clientRepository.save(client);
@@ -41,6 +66,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
+    @Transactional
     public ClientDto update(UUID id, ClientDto dto) {
         Client clientById = findClientById(id);
         City city = cityService.create(new CityDto(dto.getLivingCity()));
