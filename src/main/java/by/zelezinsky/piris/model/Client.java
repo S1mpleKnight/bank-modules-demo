@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
@@ -25,7 +25,7 @@ public class Client {
     private String middleName;
 
     @Column(nullable = false)
-    private LocalDateTime birthday;
+    private LocalDate birthday;
 
     @Column(nullable = false)
     private Boolean isMale;
@@ -34,7 +34,7 @@ public class Client {
     private Passport passport;
 
     @Column(nullable = false)
-    private String birthdayPlace;
+    private String birthPlace;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)

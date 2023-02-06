@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springdoc.core.converters.models.PageableAsQueryParam;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -29,6 +30,7 @@ public class ClientController {
     }
 
     @Operation(summary = "Create client")
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public ClientDto create(@RequestBody ClientDto dto) {
         return clientService.create(dto);
