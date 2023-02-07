@@ -15,7 +15,8 @@ public class WebConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins(FRONTEND_HOST);
+                registry.addMapping("/**").allowedOrigins(FRONTEND_HOST)
+                        .allowedMethods("GET", "PUT", "POST", "DELETE");
             }
         };
     }
