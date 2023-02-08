@@ -1,6 +1,5 @@
 package by.zelezinsky.piris.service.client;
 
-import by.zelezinsky.piris.dto.city.CityDto;
 import by.zelezinsky.piris.dto.client.ClientDto;
 import by.zelezinsky.piris.dto.client.ClientDtoMapper;
 import by.zelezinsky.piris.dto.passport.PassportDto;
@@ -35,7 +34,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     @Transactional
     public ClientDto create(ClientDto dto) {
-        City city = cityService.create(new CityDto(dto.getLivingCity()));
+        City city = cityService.findByName(dto.getLivingCity());
         Optional<Client> createdClient = clientRepository
                 .findByFirstNameAndLastNameAndMiddleName(dto.getFirstName(), dto.getLastName(), dto.getMiddleName());
         if (createdClient.isPresent()) {
@@ -69,7 +68,7 @@ public class ClientServiceImpl implements ClientService {
     @Transactional
     public ClientDto update(UUID id, ClientDto dto) {
         Client clientById = findClientById(id);
-        City city = cityService.create(new CityDto(dto.getLivingCity()));
+        City city = cityService.findByName(dto.getLivingCity());
         Client client = clientDtoMapper.toEntity(clientById, dto);
         client.setLivingCity(city);
         client = clientRepository.save(client);

@@ -20,12 +20,12 @@ public class CityServiceImpl implements CityService {
     private final CityDtoMapper mapper;
 
     @Override
-    public City create(CityDto dto) {
+    public CityDto create(CityDto dto) {
         Optional<City> optionalCity = cityRepository.findByName(dto.getName());
         if (optionalCity.isEmpty()) {
-            return cityRepository.save(mapper.toEntity(dto));
+            return mapper.toDto(cityRepository.save(mapper.toEntity(dto)));
         } else {
-            return optionalCity.get();
+            return mapper.toDto(optionalCity.get());
         }
     }
 
@@ -47,5 +47,10 @@ public class CityServiceImpl implements CityService {
     @Override
     public CityDto findById(UUID id) {
         return null;
+    }
+
+    @Override
+    public City findByName(String name) {
+        return cityRepository.findByName(name).get();
     }
 }

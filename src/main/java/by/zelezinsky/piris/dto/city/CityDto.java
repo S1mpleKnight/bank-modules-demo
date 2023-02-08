@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @Valid
 @AllArgsConstructor
@@ -19,4 +21,6 @@ public class CityDto {
     @NotBlank(message = "City name can not be null")
     @Pattern(message = "City name is not valid", regexp = CITY_REGEXP)
     private String name;
+
+    private UUID id;
 }

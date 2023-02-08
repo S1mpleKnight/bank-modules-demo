@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public interface CityService {
 
-    City create(CityDto dto);
+    CityDto create(CityDto dto);
 
     CityDto update(CityDto dto);
 
@@ -18,4 +18,6 @@ public interface CityService {
     void delete(UUID id);
 
     CityDto findById(UUID id);
+
+    City findByName(String name);
 }
