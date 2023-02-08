@@ -19,7 +19,7 @@ import java.util.UUID;
 public class ClientDto {
 
     private final static String NAME_REGEXP = "[a-zA-Zа-яА-Я]{1,255}";
-    private final static String ADDRESS_REGEXP = "[a-zA-Zа-яА-Я0-9 .,-]{5,255}";
+    private final static String ADDRESS_REGEXP = "[a-zA-Zа-яА-Я]+[a-zA-Zа-яА-Я0-9 .,-]{4,254}";
     private final static String MOBILE_PHONE_NUMBER_REGEXP = "(((\\+)375)|(80))(25|29|33|44)[0-9]{7}";
     private final static String HOME_PHONE_NUMBER_REGEXP = "(80)[0-9]{3}[0-9]{7}";
     private static final String DATE_REGEXP = "yyyy-MM-dd";
