@@ -18,13 +18,13 @@ import java.util.UUID;
 @Data
 public class ClientDto {
 
-    private final static String NATIONALITY_REGEXP = "[a-zA-Zа-яА-Я ]";
-    private final static String NAME_REGEXP = "[a-zA-Zа-яА-Я -]";
-    private final static String ADDRESS_REGEXP = "[a-zA-Zа-яА-Я0-9 .,-]";
+    private final static String NAME_REGEXP = "[a-zA-Zа-яА-Я]{1,255}";
+    private final static String ADDRESS_REGEXP = "[a-zA-Zа-яА-Я0-9 .,-]{5,255}";
     private final static String MOBILE_PHONE_NUMBER_REGEXP = "(((\\+)375)|(80))(25|29|33|44)[0-9]{7}";
     private final static String HOME_PHONE_NUMBER_REGEXP = "(80)[0-9]{3}[0-9]{7}";
     private static final String DATE_REGEXP = "yyyy-MM-dd";
-    private static final String CITY_REGEXP = "[a-zA-zа-яА-Я -]{2,}";
+    private static final String CITY_REGEXP = "[a-zA-zа-яА-Я -]{2,255}";
+    private static final String MONEY_REGEXP = "([0-9]+([.][0-9])?)?";
 
     private UUID id;
 
@@ -75,7 +75,7 @@ public class ClientDto {
     private FamilyStatus familyStatus;
 
     @NotBlank(message = "Nationality can not be null")
-    @Pattern(message = "Nationality is not valid", regexp = NATIONALITY_REGEXP)
+    @Pattern(message = "Nationality is not valid", regexp = NAME_REGEXP)
     private String nationality;
 
     @NotBlank(message = "Disability status can not be null")
@@ -84,7 +84,7 @@ public class ClientDto {
     @NotBlank(message = "Pensioner flag can not be null")
     private Boolean pensioner;
 
-    //todo: amount validation
+    @Pattern(message = "Invalid month income value", regexp = MONEY_REGEXP )
     private BigDecimal monthlyIncome;
 
     @NotBlank(message = "Military service flag can not be null")

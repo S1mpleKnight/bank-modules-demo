@@ -14,7 +14,7 @@ public class PassportDto {
 
     private static final String PASSPORT_SERIES_REGEXP = "[A-Z]{2}";
     private static final String PASSPORT_NUMBER_REGEXP = "[0-9]{7}";
-    private static final String PASSPORT_ISSUING_AUTHORITY_REGEXP = "[a-zA-Zа-яА-Я ]{4,}";
+    private static final String PASSPORT_ISSUING_AUTHORITY_REGEXP = "[a-zA-Zа-яА-Я ]{4,255}";
     private static final String DATE_REGEXP = "yyyy-MM-dd";
     private static final String IDENTITY_NUMBER_REGEXP = "[0-9A-Z]{14}";
 
