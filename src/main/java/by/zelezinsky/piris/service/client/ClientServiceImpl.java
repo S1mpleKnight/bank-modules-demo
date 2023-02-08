@@ -18,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -35,6 +36,12 @@ public class ClientServiceImpl implements ClientService {
     @Transactional
     public ClientDto create(ClientDto dto) {
         City city = cityService.findByName(dto.getLivingCity());
+        if (dto.getBirthday().isAfter(LocalDate.now())) {
+            throw new BusinessException("Client birthday must be correct");
+        }
+        if (dto.getPassport().getIssueDate().isAfter(LocalDate.now())) {
+            throw new BusinessException("Passport issue date must be correct");
+        }
         Optional<Client> createdClient = clientRepository
                 .findByFirstNameAndLastNameAndMiddleName(dto.getFirstName(), dto.getLastName(), dto.getMiddleName());
         if (createdClient.isPresent()) {
@@ -68,6 +75,12 @@ public class ClientServiceImpl implements ClientService {
     @Transactional
     public ClientDto update(UUID id, ClientDto dto) {
         Client clientById = findClientById(id);
+        if (dto.getBirthday().isAfter(LocalDate.now())) {
+            throw new BusinessException("Client birthday must be correct");
+        }
+        if (dto.getPassport().getIssueDate().isAfter(LocalDate.now())) {
+            throw new BusinessException("Passport issue date must be correct");
+        }
         City city = cityService.findByName(dto.getLivingCity());
         Client client = clientDtoMapper.toEntity(clientById, dto);
         client.setLivingCity(city);
