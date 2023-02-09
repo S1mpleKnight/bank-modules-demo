@@ -5,11 +5,15 @@ spring:
     username: postgres
     password: password
     driver-class-name: org.postgresql.Driver
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.xml
+    database-change-log-lock-table: CHANGELOCK
+    database-change-log-table: CHANGELOG
 #-----------------------JPA ORM OPTIONS---------------------
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
