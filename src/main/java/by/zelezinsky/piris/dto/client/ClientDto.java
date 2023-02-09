@@ -1,8 +1,8 @@
 package by.zelezinsky.piris.dto.client;
 
 import by.zelezinsky.piris.dto.passport.PassportDto;
-import by.zelezinsky.piris.model.DisabilityStatus;
-import by.zelezinsky.piris.model.FamilyStatus;
+import by.zelezinsky.piris.model.client.DisabilityStatus;
+import by.zelezinsky.piris.model.client.FamilyStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;

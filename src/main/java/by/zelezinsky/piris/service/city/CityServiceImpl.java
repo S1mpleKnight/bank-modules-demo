@@ -2,7 +2,7 @@ package by.zelezinsky.piris.service.city;
 
 import by.zelezinsky.piris.dto.city.CityDto;
 import by.zelezinsky.piris.dto.city.CityDtoMapper;
-import by.zelezinsky.piris.model.City;
+import by.zelezinsky.piris.model.client.City;
 import by.zelezinsky.piris.repository.CityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

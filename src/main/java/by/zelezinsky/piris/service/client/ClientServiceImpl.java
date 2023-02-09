@@ -6,9 +6,9 @@ import by.zelezinsky.piris.dto.passport.PassportDto;
 import by.zelezinsky.piris.dto.passport.PassportDtoMapper;
 import by.zelezinsky.piris.exception.BusinessException;
 import by.zelezinsky.piris.exception.NotFoundException;
-import by.zelezinsky.piris.model.City;
-import by.zelezinsky.piris.model.Client;
-import by.zelezinsky.piris.model.Passport;
+import by.zelezinsky.piris.model.client.City;
+import by.zelezinsky.piris.model.client.Client;
+import by.zelezinsky.piris.model.client.Passport;
 import by.zelezinsky.piris.repository.ClientRepository;
 import by.zelezinsky.piris.repository.PassportRepository;
 import by.zelezinsky.piris.service.city.CityService;
@@ -99,7 +99,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Page<ClientDto> findAll(Pageable pageable) {
-        return clientRepository.findAll(pageable).map(clientDtoMapper::toDto);
+        return clientRepository.findAllByOrderByLastNameAsc(pageable).map(clientDtoMapper::toDto);
     }
 
     @Override

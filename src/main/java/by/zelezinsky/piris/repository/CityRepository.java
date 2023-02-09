@@ -1,6 +1,6 @@
 package by.zelezinsky.piris.repository;
 
-import by.zelezinsky.piris.model.City;
+import by.zelezinsky.piris.model.client.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

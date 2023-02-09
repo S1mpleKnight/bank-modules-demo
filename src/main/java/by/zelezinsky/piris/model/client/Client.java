@@ -1,10 +1,13 @@
-package by.zelezinsky.piris.model;
+package by.zelezinsky.piris.model.client;
 
+import by.zelezinsky.piris.model.account.BankAccount;
+import by.zelezinsky.piris.model.deposit.Deposit;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -64,4 +67,10 @@ public class Client {
 
     @JoinColumn(nullable = false)
     private Boolean isLiableMilitaryService;
+
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "client")
+    private List<BankAccount> accounts;
+
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "client")
+    private List<Deposit> deposits;
 }

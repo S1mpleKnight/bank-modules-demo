@@ -1,6 +1,6 @@
 package by.zelezinsky.piris.dto.city;
 
-import by.zelezinsky.piris.model.City;
+import by.zelezinsky.piris.model.client.City;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

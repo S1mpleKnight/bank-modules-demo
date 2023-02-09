@@ -1,7 +1,7 @@
 package by.zelezinsky.piris.service.city;
 
 import by.zelezinsky.piris.dto.city.CityDto;
-import by.zelezinsky.piris.model.City;
+import by.zelezinsky.piris.model.client.City;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

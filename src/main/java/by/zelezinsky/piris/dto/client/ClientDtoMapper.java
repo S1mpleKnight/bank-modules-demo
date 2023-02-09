@@ -2,7 +2,7 @@ package by.zelezinsky.piris.dto.client;
 
 import by.zelezinsky.piris.dto.city.CityDtoMapper;
 import by.zelezinsky.piris.dto.passport.PassportDtoMapper;
-import by.zelezinsky.piris.model.Client;
+import by.zelezinsky.piris.model.client.Client;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

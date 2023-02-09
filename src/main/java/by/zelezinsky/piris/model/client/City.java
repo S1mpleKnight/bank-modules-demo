@@ -1,4 +1,4 @@
-package by.zelezinsky.piris.model;
+package by.zelezinsky.piris.model.client;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

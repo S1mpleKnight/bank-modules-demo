@@ -1,6 +1,6 @@
 package by.zelezinsky.piris.repository;
 
-import by.zelezinsky.piris.model.Passport;
+import by.zelezinsky.piris.model.client.Passport;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

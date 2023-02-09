@@ -1,4 +1,4 @@
-package by.zelezinsky.piris.model;
+package by.zelezinsky.piris.model.client;
 
 public enum DisabilityStatus {
     NONE,
