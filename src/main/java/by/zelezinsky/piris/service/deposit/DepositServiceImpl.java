@@ -26,7 +26,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class DepositServiceImpl implements DepositService {
 
-    private static final int END_VALUE = 10;
+    private static final int END_VALUE = 9;
     private final DepositRepository depositRepository;
     private final BankAccountRepository bankAccountRepository;
     private final DepositDtoMapper depositDtoMapper;

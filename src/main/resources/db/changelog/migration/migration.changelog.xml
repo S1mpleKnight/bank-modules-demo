@@ -10,4 +10,11 @@
                  stripComments="true"/>
     </changeSet>
 
+    <changeSet author="Ivan Zelezinski" id="2 - create default accounts">
+        <sqlFile encoding="utf8"
+                 path="2 - create default accounts.sql"
+                 relativeToChangelogFile="true"
+                 stripComments="true"/>
+    </changeSet>
+
 </databaseChangeLog>
