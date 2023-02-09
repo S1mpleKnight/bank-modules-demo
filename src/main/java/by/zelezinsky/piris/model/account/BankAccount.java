@@ -30,9 +30,6 @@ public class BankAccount {
     @Column(nullable = false)
     private BigDecimal credit;
 
-    @Column(nullable = false)
-    private AccountCodeType accountCodeType;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
