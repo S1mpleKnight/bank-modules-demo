@@ -69,8 +69,5 @@ public class Client {
     private Boolean isLiableMilitaryService;
 
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "client")
-    private List<BankAccount> accounts;
-
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "client")
     private List<Deposit> deposits;
 }

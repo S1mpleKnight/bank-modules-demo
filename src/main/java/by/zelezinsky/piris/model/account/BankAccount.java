@@ -1,7 +1,10 @@
 package by.zelezinsky.piris.model.account;
 
-import by.zelezinsky.piris.model.client.Client;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -10,6 +13,7 @@ import java.util.UUID;
 @Entity
 @Data
 @Table(name = "bank_account")
+@Builder
 public class BankAccount {
 
     @Id
@@ -30,7 +34,6 @@ public class BankAccount {
     @Column(nullable = false)
     private BigDecimal credit;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id", nullable = false)
-    private Client client;
+    public BankAccount() {
+    }
 }

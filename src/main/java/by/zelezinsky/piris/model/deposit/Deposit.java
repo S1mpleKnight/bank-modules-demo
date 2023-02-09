@@ -6,6 +6,7 @@ import by.zelezinsky.piris.model.client.Client;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -38,15 +39,18 @@ public class Deposit {
     @Column(nullable = false)
     private Integer percent;
 
+    @Column(nullable = false)
+    private BigDecimal sumAmount;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false, name = "client_id")
     private Client client;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "current_account_id", nullable = false)
     private BankAccount currentAccount;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "percent_account_id", nullable = false)
     private BankAccount percentAccount;
 }
