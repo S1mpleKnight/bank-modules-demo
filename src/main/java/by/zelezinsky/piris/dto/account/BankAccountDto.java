@@ -17,4 +17,5 @@ public class BankAccountDto {
     private BigDecimal debit;
     private BigDecimal credit;
     private AccountCodeType accountCodeType;
+    private String clientData;
 }

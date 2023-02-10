@@ -11,5 +11,5 @@ import java.util.UUID;
 @Repository
 public interface DepositRepository extends JpaRepository<Deposit, UUID> {
 
-    Page<Deposit> findAllByOrderByStartDateDesc(Pageable pageable);
+    Page<Deposit> findAllByIsOpenIsTrueOrderByStartDateDesc(Pageable pageable);
 }

@@ -36,6 +36,9 @@ public class BankAccount {
     @Column(nullable = false)
     private BigDecimal credit;
 
+    @Column(name = "client_data")
+    private String clientData;
+
     public BankAccount() {
     }
 }

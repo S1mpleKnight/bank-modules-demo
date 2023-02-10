@@ -17,4 +17,8 @@ public interface DepositService {
     DepositDto findById(UUID id);
 
     Page<DepositDto> findAll(Pageable pageable);
+
+    void closeDeposit(UUID id);
+
+    void closeDay(Integer monthAmount);
 }

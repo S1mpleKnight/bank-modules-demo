@@ -11,4 +11,13 @@ interface Url {
     interface Client {
         String PATH = "/clients";
     }
+
+    interface Deposit {
+        String PATH = "/deposit";
+
+        interface Operation {
+            String CLOSE_DAY = Deposit.PATH + "/closeDay";
+            String CLOSE_TRANSACTION = Deposit.PATH + ID + "/closeTransaction";
+        }
+    }
 }

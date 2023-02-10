@@ -17,4 +17,18 @@
                  stripComments="true"/>
     </changeSet>
 
+    <changeSet author="Ivan Zelezinski" id="3 - add client info account and deposit status">
+        <sqlFile encoding="utf8"
+                 path="3 - add client info account and deposit status.sql"
+                 relativeToChangelogFile="true"
+                 stripComments="true"/>
+    </changeSet>
+
+    <changeSet author="Ivan Zelezinski" id="4 - add cities">
+        <sqlFile encoding="utf8"
+                 path="4 - add cities.sql"
+                 relativeToChangelogFile="true"
+                 stripComments="true"/>
+    </changeSet>
+
 </databaseChangeLog>

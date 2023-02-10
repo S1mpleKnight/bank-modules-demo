@@ -37,20 +37,23 @@ public class Deposit {
     private Integer contractTerm;
 
     @Column(nullable = false)
-    private Integer percent;
+    private BigDecimal percent;
 
     @Column(nullable = false)
     private BigDecimal sumAmount;
+
+    @Column(name = "is_open")
+    private Boolean isOpen = true;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false, name = "client_id")
     private Client client;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "current_account_id", nullable = false)
     private BankAccount currentAccount;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "percent_account_id", nullable = false)
     private BankAccount percentAccount;
 }

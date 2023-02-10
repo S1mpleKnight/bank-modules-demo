@@ -46,7 +46,7 @@ CREATE TABLE deposit (
                          currency smallint NOT NULL,
                          deposit_type smallint NOT NULL,
                          end_date date NOT NULL,
-                         percent integer NOT NULL,
+                         percent numeric(36,2) NOT NULL,
                          start_date date NOT NULL,
                          sum_amount numeric(38,2) NOT NULL,
                          client_id uuid NOT NULL,

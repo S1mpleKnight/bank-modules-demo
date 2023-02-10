@@ -18,7 +18,7 @@ public class DepositDto {
 
     private static final String DATE_REGEXP = "yyyy-MM-dd";
     private static final String NUMBER_REGEXP = "[0-9][1-9]";
-    private static final String PERCENT_REGEXP = "[0-9]{2}([.][0-9]{2})?";
+    private static final String PERCENT_REGEXP = "[0-9]{2}[1-9]";
     private static final String CONTRACT_NUMBER_REGEXP = "[0-9]{13}";
     private static final String MONEY_REGEXP = "[0-9]{2,}";
 
@@ -48,7 +48,7 @@ public class DepositDto {
 
     @NotBlank(message = "Percent is not valid")
     @Pattern(message = "Percent is not valid", regexp = PERCENT_REGEXP)
-    private Integer percent;
+    private BigDecimal percent;
 
     @NotBlank(message = "Sum amount is not valid")
     @Pattern(message = "Sum amount is not valid", regexp = MONEY_REGEXP)
