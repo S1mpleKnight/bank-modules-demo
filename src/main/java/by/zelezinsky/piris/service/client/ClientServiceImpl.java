@@ -96,11 +96,11 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void delete(UUID id) {
         Client client = findClientById(id);
-        Boolean canDelete = depositRepository.existsByClientAndIsOpenIsTrue(client);
-        if (canDelete) {
-            clientRepository.delete(client);
-        } else {
+        Boolean canNotDelete = depositRepository.existsByClientAndIsOpenIsTrue(client);
+        if (canNotDelete) {
             throw new BusinessException("Client is busy with deposit");
+        } else {
+            clientRepository.delete(client);
         }
     }
 
