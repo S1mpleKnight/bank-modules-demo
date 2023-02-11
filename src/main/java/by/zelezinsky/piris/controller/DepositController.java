@@ -38,7 +38,7 @@ public class DepositController {
     @Operation(summary = "Create deposit")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public DepositDto create(DepositDto dto) {
+    public DepositDto create(@RequestBody DepositDto dto) {
         return depositService.create(dto);
     }
 
