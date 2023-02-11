@@ -16,5 +16,6 @@ public interface DepositDtoMapper {
     @Mapping(target = "currentAccount", ignore = true)
     @Mapping(target = "percentAccount", ignore = true)
     @Mapping(target = "client", ignore = true)
+    @Mapping(target = "isOpen", ignore = true)
     Deposit toEntity(DepositDto dto);
 }

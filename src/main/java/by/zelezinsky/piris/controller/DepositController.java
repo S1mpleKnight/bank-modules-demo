@@ -43,7 +43,7 @@ public class DepositController {
     }
 
     @Operation(summary = "Close deposit")
-    @PutMapping(Url.Deposit.Operation.CLOSE_TRANSACTION)
+    @PutMapping(Url.ID)
     public void closeDeposit(@PathVariable UUID id) {
         depositService.closeDeposit(id);
     }

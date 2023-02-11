@@ -57,6 +57,8 @@ public class DepositDto {
     @NotBlank(message = "Client id is not valid")
     private UUID clientId;
 
+    private Boolean isOpen;
+
     private ClientDto client;
 
     private BankAccountDto currentAccount;
