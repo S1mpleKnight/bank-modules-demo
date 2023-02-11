@@ -16,7 +16,7 @@ interface Url {
         String PATH = "/deposits";
 
         interface Operation {
-            String CLOSE_DAY = Deposit.PATH + "/closeDay";
+            String CLOSE_DAY = "/closeDay";
         }
     }
 }

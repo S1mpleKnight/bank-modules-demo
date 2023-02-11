@@ -49,8 +49,8 @@ public class DepositController {
     }
 
     @Operation(summary = "Close Day operation")
-    @PutMapping(Url.Deposit.Operation.CLOSE_DAY)
-    public void closeDay(@RequestParam Integer monthAmount) {
+    @PostMapping(Url.Deposit.Operation.CLOSE_DAY)
+    public void closeDay(@RequestBody Integer monthAmount) {
         depositService.closeDay(monthAmount);
     }
 
