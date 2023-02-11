@@ -13,7 +13,7 @@ interface Url {
     }
 
     interface Deposit {
-        String PATH = "/deposit";
+        String PATH = "/deposits";
 
         interface Operation {
             String CLOSE_DAY = Deposit.PATH + "/closeDay";

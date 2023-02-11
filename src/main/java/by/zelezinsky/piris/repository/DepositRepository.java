@@ -1,5 +1,6 @@
 package by.zelezinsky.piris.repository;
 
+import by.zelezinsky.piris.model.client.Client;
 import by.zelezinsky.piris.model.deposit.Deposit;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,4 +13,6 @@ import java.util.UUID;
 public interface DepositRepository extends JpaRepository<Deposit, UUID> {
 
     Page<Deposit> findAllByIsOpenIsTrueOrderByStartDateDesc(Pageable pageable);
+
+    Boolean existsByClientAndIsOpenIsTrue(Client client);
 }

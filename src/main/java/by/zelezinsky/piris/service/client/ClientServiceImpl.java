@@ -10,6 +10,7 @@ import by.zelezinsky.piris.model.client.City;
 import by.zelezinsky.piris.model.client.Client;
 import by.zelezinsky.piris.model.client.Passport;
 import by.zelezinsky.piris.repository.ClientRepository;
+import by.zelezinsky.piris.repository.DepositRepository;
 import by.zelezinsky.piris.repository.PassportRepository;
 import by.zelezinsky.piris.service.city.CityService;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,7 @@ public class ClientServiceImpl implements ClientService {
     private final PassportRepository passportRepository;
     private final CityService cityService;
     private final PassportDtoMapper passportDtoMapper;
+    private final DepositRepository depositRepository;
 
     @Override
     @Transactional
@@ -93,8 +95,13 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void delete(UUID id) {
-        Client clientById = findClientById(id);
-        clientRepository.delete(clientById);
+        Client client = findClientById(id);
+        Boolean canDelete = depositRepository.existsByClientAndIsOpenIsTrue(client);
+        if (canDelete) {
+            clientRepository.delete(client);
+        } else {
+            throw new BusinessException("Client is busy with deposit");
+        }
     }
 
     @Override
